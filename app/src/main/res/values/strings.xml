@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BadWordDetector</string>
+    <string name="input">input</string>
+    <string name="btn_check">Check</string>
+    <string name="btn_reset">Reset</string>
+    <string name="result">Result</string>
+    <string name="login">Log in</string>
+</resources>
