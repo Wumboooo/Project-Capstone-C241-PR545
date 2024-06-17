@@ -32,7 +32,7 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
     "password": "johndoe1"
   }
 
-  ##### Response
+##### Response
 
 - **Status:** **201 Created**
   ```json
@@ -44,7 +44,59 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
     "name": "John Doe",
     "email": "johndoe@example.com",
     "createdAt": "2023-06-15T00:00:00.000Z"
+    }
   }
-}
-
   ```
+
+- **Status:** **400 Bad Request**
+  ```json
+  {
+  "payload": {
+    "status_code": 400,
+    "data": null
+    },
+    "message": "Validation errors"
+  }
+  ```
+  ```json
+  {
+  "payload": {
+    "status_code": 400,
+    "data": null
+    },
+    "message": "Validation errors"
+  }
+  ```
+  ---
+
+#### POST /v1/auth/login - Login user
+
+##### Request
+
+- **Method:** **POST**
+- **Path:** **`/v1/auth/login`**
+- **Body:**
+  ```json
+  {
+  "email": "johndoe@example.com",
+  "password": "johndoe1"
+  }
+  ```
+
+  ##### Response
+
+- **Status:** **200 OK**
+  ```json
+  {
+    "success": true,
+    "message": "Login successful",
+    "data": {
+      "userId": "user-uid",
+      "name": "John Doe",
+      "token": "jwt-token"
+    }
+  }
+  ```
+  
+
+
