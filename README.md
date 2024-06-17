@@ -13,8 +13,6 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
 | /v1/auth/register  | POST        | Sign up a new user | -               |
 | /v1/auth/login     | POST        | Login user         | -               |
 | /v1/auth/user/:uid | GET         | Get user data      | Yes             |
-| /v1/history        | POST        | Save history       | Yes             |
-| /v1/history/:uid   | GET         | Get user history   | Yes             |
 
 ### Authentication & Authorization (Register, Login)
 
