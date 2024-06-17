@@ -80,8 +80,8 @@ Base URL : https://wordwardenapp.et.r.appspot.com
 - **Body:**
   ```json
   {
-  "email": "johndoe@example.com",
-  "password": "johndoe1"
+    "email": "johndoe@example.com",
+    "password": "johndoe1"
   }
   ```
 
