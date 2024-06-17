@@ -95,7 +95,7 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
     }
   }
   ```
-  - **Status:** **400 Bad Request**
+- **Status:** **400 Bad Request**
   ```json
   {
     "payload": {
@@ -130,7 +130,7 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
     }
   }
   ```
-  - **Status:** **400 Bad Request**
+- **Status:** **400 Bad Request**
   ```json
   {
     "payload": {
