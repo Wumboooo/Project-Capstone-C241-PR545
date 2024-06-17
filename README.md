@@ -35,14 +35,17 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
 - **Status:** **201 Created**
   ```json
   {
-  "success": true,
-  "message": "User registered successfully",
-  "data": {
-    "uid": "user-uid",
-    "name": "John Doe",
-    "email": "johndoe@example.com",
-    "createdAt": "2023-06-15T00:00:00.000Z"
-    }
+    "payload": {
+      "status_code": 201,
+      "data": {
+        "uid": "user-uid",
+        "name": "John Doe",
+        "email": "johndoe@example.com",
+        "password": "hashed-password",
+        "createdAt": "2023-06-15T00:00:00.000Z"
+      }
+    },
+    "message": "User Created"
   }
   ```
 
