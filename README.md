@@ -127,13 +127,16 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
 - **Status:** **200 OK**
   ```json
    {
-    "success": true,
-    "message": "User fetched successfully",
-    "data": {
-      "name": "John Doe",
-      "email": "johndoe@example.com",
-      "createdAt": "2023-06-15T00:00:00.000Z"
-    }
+    "payload": {
+        "status_code": 200,
+        "data": {
+            "status_code": 200,
+            "name": "John Doe",
+            "email": "johndoe@example.com",
+            "createdAt": "2024-06-17T01:18:34.524Z"
+        }
+    },
+    "message": "User fetched successfully"
   }
   ```
 - **Status:** **400 Bad Request**
