@@ -43,7 +43,7 @@ Base URL : https://wordwarden-flask-api-wn2mamywtq-et.a.run.app
 
   ```json
     {
-    "text": "Selamat pagi dunia"
+      "text": "Selamat pagi dunia"
     }
   ```
 
