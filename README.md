@@ -6,7 +6,7 @@ This repository contains the Node.js backend for the WordWarden project. The bac
 
 ### Summary
 
-Base URL : https://wordwardenapp.et.r.appspot.com/
+Base URL : https://wordwardenapp.et.r.appspot.com
 
 | Route              | HTTP Method | Description        | Token Required? |
 | ------------------ | ----------- | ------------------ | --------------- |
