@@ -97,6 +97,50 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
     }
   }
   ```
+  - **Status:** **400 Bad Request**
+  ```json
+  {
+    "payload": {
+      "status_code": 400,
+      "data": null
+    },
+    "message": "Validation errors"
+  }
+  ```
   
+  ---
 
+#### GET `/v1/auth/user/:uid` - Get user data
 
+##### Request
+
+- **Method:** **GET**
+- **Path:** **`/v1/auth/user/:uidr`**
+- **Headers** **Authorization: Bearer <jwt-token>**
+
+##### Response
+
+- **Status:** **200 OK**
+  ```json
+   {
+    "success": true,
+    "message": "User fetched successfully",
+    "data": {
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "createdAt": "2023-06-15T00:00:00.000Z"
+    }
+  }
+  ```
+  - **Status:** **400 Bad Request**
+  ```json
+  {
+    "payload": {
+      "status_code": 400,
+      "data": null
+    },
+    "message": "Failed to fetch user"
+  }
+  ```
+
+  
