@@ -115,7 +115,7 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
 ##### Request
 
 - **Method:** **GET**
-- **Path:** **`/v1/auth/user/:uidr`**
+- **Path:** **`/v1/auth/user/:uid`**
 - **Headers** **Authorization: Bearer <jwt-token>**
 
 ##### Response
