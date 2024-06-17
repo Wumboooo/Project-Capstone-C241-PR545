@@ -71,7 +71,7 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
   ```
   ---
 
-#### POST /v1/auth/login - Login user
+#### POST `/v1/auth/login` - Login user
 
 ##### Request
 
