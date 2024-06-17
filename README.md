@@ -16,4 +16,5 @@
 ## Repositories
 - [Machine Learning](https://github.com/Wumboooo/Project-Capstone-C241-PR545/tree/ML)
 - [CC Node](https://github.com/Wumboooo/Project-Capstone-C241-PR545/tree/CC-Node)
+- [CC Flask](https://github.com/Wumboooo/Project-Capstone-C241-PR545/tree/CC-Flask)
 - [Mobile Development](https://github.com/Wumboooo/Project-Capstone-C241-PR545/tree/MD)
