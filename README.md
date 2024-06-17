@@ -58,12 +58,13 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
   ```
   ```json
   {
-  "payload": {
-    "status_code": 400,
-    "data": null
+    "payload": {
+      "status_code": 400,
+      "data": null
     },
-    "message": "Validation errors"
+    "message": "Failed To Create User"
   }
+
   ```
   ---
 
