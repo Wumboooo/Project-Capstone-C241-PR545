@@ -90,13 +90,15 @@ Base URL: https://wordwardenapp.et.r.appspot.com/
 - **Status:** **200 OK**
   ```json
   {
-    "success": true,
-    "message": "Login successful",
-    "data": {
-      "userId": "user-uid",
-      "name": "John Doe",
-      "token": "jwt-token"
-    }
+    "payload": {
+        "status_code": 200,
+        "data": {
+            "userId": "user-uid",
+            "name": "John Doe",
+            "token": "jwt-token"
+        }
+    },
+    "message": "success"
   }
   ```
 - **Status:** **400 Bad Request**
