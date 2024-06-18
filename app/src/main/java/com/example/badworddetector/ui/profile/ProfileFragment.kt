@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -36,6 +38,7 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var sharedViewModel: SharedViewModel
+    private lateinit var progressIndicator: ProgressBar
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,8 +46,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,21 +55,21 @@ class ProfileFragment : Fragment() {
 
         userPreference = UserPreference(requireContext())
         mainRepository = ApiConfig.provideMainRepository(requireContext())
+        progressIndicator = view.findViewById(R.id.progressIndicator)
 
-        val logoutButton = view.findViewById<Button>(R.id.logout)
+        val logoutButton = binding.logout
         logoutButton.setOnClickListener {
             logout()
         }
 
-        val userName = view.findViewById<TextView>(R.id.nama)
-        val userEmail = view.findViewById<TextView>(R.id.email)
-        historyRecyclerView = view.findViewById(R.id.rvHistory)
+        val userName = binding.nama
+        val userEmail = binding.email
+        historyRecyclerView = binding.rvHistory
 
         val userId = userPreference.getUserId()
         userId?.let {
             fetchUserData(it, userName, userEmail)
         }
-
     }
 
     private fun fetchUserData(userId: String, userName: TextView, userEmail: TextView) {
@@ -75,16 +77,18 @@ class ProfileFragment : Fragment() {
 
         if (token != null) {
             mainRepository.getUserData(userId, token) { result ->
-                result.onSuccess { userResponse ->
-                    val userData = userResponse.payload.data
-                    userData?.let {
-                        sharedViewModel.setUserEmail(it.email ?: "N/A")
-                        userName.text = it.name ?: "N/A"
-                        userEmail.text = it.email ?: "N/A"
-                        loadUserHistoryByEmail(it.email.toString())
+                if (isAdded) {
+                    result.onSuccess { userResponse ->
+                        val userData = userResponse.payload.data
+                        userData?.let {
+                            sharedViewModel.setUserEmail(it.email ?: "N/A")
+                            userName.text = it.name ?: "N/A"
+                            userEmail.text = it.email ?: "N/A"
+                            loadUserHistoryByEmail(it.email.toString())
+                        }
+                    }.onFailure { exception ->
+                        Toast.makeText(requireContext(), "Failed to fetch name and email: ${exception.message}", Toast.LENGTH_SHORT).show()
                     }
-                }.onFailure { exception ->
-                    Toast.makeText(requireContext(), "Failed to fetch name and email: ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         } else {
@@ -93,18 +97,33 @@ class ProfileFragment : Fragment() {
     }
 
     private fun loadUserHistoryByEmail(email: String) {
+        showLoading(true)
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val userInputs: List<UserInput> = mainRepository.getUserInputsByEmail(email)
                 withContext(Dispatchers.Main) {
-                    setupRecyclerView(userInputs)
+                    if (isAdded) {
+                        showLoading(false)
+                        setupRecyclerView(userInputs)
+                    }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), "Failed to load history: ${e.message}", Toast.LENGTH_SHORT).show()
+                    if (isAdded) {
+                        showLoading(false)
+                        Toast.makeText(requireContext(), "Failed to load history: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+        requireActivity().window.setFlags(
+            if (isLoading) WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE else 0,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        )
     }
 
     private fun setupRecyclerView(userInputs: List<UserInput>) {

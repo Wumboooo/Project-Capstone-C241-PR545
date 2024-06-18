@@ -11,7 +11,7 @@
         android:id="@+id/logo"
         android:layout_width="221dp"
         android:layout_height="194dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/icon_badword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,5 +74,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logout" />
+
+    <ProgressBar
+        android:id="@+id/progressIndicator"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/rvHistory"
+        app:layout_constraintEnd_toEndOf="@+id/rvHistory"
+        app:layout_constraintStart_toStartOf="@+id/rvHistory"
+        app:layout_constraintTop_toTopOf="@+id/rvHistory" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
