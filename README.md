@@ -16,7 +16,7 @@ There are 5 preprocessing steps performed on the text data here, namely:
 2. Removing unnecessary characters (URL, username, etc.)
 3. Removing punctuation marks
 4. Removing stopwords
-5. Converting alay words into more readable ones
+5. Converting "alay" words into more readable ones
 
 ## Modelling
 
