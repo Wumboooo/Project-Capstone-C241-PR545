@@ -8,7 +8,7 @@ In this repository, we have created a models from [Kaggle](https://www.kaggle.co
 4. data.csv: This file contains the main dataset, including both abusive and hate speech instances along with relevant annotations.
 5. new_kamusalay.csv: This file contain a lexicon or dictionary used for preprocessing the text data, then to identify and normalize slang words or abbreviations.
 
-## Data Understanding and Preprocessing
+## Data Preprocessing
 
 There are 5 preprocessing steps performed on the text data here, namely:
 
