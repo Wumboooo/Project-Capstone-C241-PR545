@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BadWordDetector" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_app</item>
+    </style>
+
+    <style name="Theme.BadWordDetector" parent="Base.Theme.BadWordDetector" />
+</resources>

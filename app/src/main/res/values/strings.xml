@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Word Warden</string>
+    <string name="input">Input</string>
+    <string name="btn_check">Check</string>
+    <string name="btn_reset">Reset</string>
+    <string name="result">Result</string>
+    <string name="login">Log in</string>
+    <string name="logout">Log out</string>
+    <string name="about">About</string>
+    <string name="about_description">
+        Selamat datang di Word Warden, sebuah aplikasi inovatif yang dirancang khusus untuk mendeteksi dan mengidentifikasi konteks kalimat dalam bahasa Indonesia, apakah bersifat kasar atau tidak. Dengan teknologi canggih dan algoritma yang dikembangkan secara mendalam, aplikasi kami mampu menganalisis teks secara akurat dan memberikan penilaian yang tepat.
+        \n\n
+        Created by Team C241-PR545
+    </string>
+    <string name="version">v1.0.0</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_main">Main</string>
+    <string name="title_about">About</string>
+
+    <string name="name">Nama</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="welcome_login">Hi! Welcome to
+    Word Warden</string>
+    <string name="welcome_register">Hi! Lets Register to
+    Word Warden</string>
+
+    <string name="btn_register">Register</string>
+    <string name="have_account">Already have an account? Login</string>
+
+    <string name="btn_login">Login</string>
+    <string name="havent_account">Don’t have account? Register Here</string>
+</resources>
