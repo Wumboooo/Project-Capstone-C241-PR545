@@ -14,13 +14,16 @@ import com.example.badworddetector.R
 import com.example.badworddetector.data.MainRepository
 import com.example.badworddetector.data.api.ApiConfig
 import com.example.badworddetector.databinding.FragmentMainBinding
+import com.example.badworddetector.ui.SharedViewModel
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
     private lateinit var mainRepository: MainRepository
+    private lateinit var sharedViewModel: SharedViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
         mainRepository = ApiConfig.provideMainRepository(requireContext())
 
@@ -32,15 +35,18 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         checkButton.setOnClickListener {
             val text = inputEditText.text.toString().trim()
             if (text.isNotEmpty()) {
-                mainRepository.predictText(text) { result ->
-                    result.onSuccess { predictResponse ->
-                        if (predictResponse.status) {
-                            resultTextView.text = predictResponse.result
-                        } else {
-                            resultTextView.text = predictResponse.error ?: "Prediction failed"
+                sharedViewModel.userEmail.observe(viewLifecycleOwner) { email ->
+                    mainRepository.predictText(text, email) { result ->
+                        result.onSuccess { predictResponse ->
+                            if (predictResponse.status) {
+                                resultTextView.text = predictResponse.result
+                            } else {
+                                resultTextView.text = predictResponse.error ?: "Prediction failed"
+                            }
+
+                        }.onFailure {
+                            resultTextView.text = "An error occurred: ${it.message}"
                         }
-                    }.onFailure {
-                        resultTextView.text = "An error occurred: ${it.message}"
                     }
                 }
             } else {

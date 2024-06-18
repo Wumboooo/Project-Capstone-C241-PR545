@@ -20,6 +20,7 @@ import com.example.badworddetector.data.preference.UserPreference
 import com.example.badworddetector.database.UserInput
 import com.example.badworddetector.databinding.FragmentAboutBinding
 import com.example.badworddetector.databinding.FragmentProfileBinding
+import com.example.badworddetector.ui.SharedViewModel
 import com.example.badworddetector.ui.login.LoginActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,6 +35,7 @@ class ProfileFragment : Fragment() {
     private lateinit var historyRecyclerView: RecyclerView
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    private lateinit var sharedViewModel: SharedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +49,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
         userPreference = UserPreference(requireContext())
         mainRepository = ApiConfig.provideMainRepository(requireContext())
@@ -75,6 +78,7 @@ class ProfileFragment : Fragment() {
                 result.onSuccess { userResponse ->
                     val userData = userResponse.payload.data
                     userData?.let {
+                        sharedViewModel.setUserEmail(it.email ?: "N/A")
                         userName.text = it.name ?: "N/A"
                         userEmail.text = it.email ?: "N/A"
                         loadUserHistoryByEmail(it.email.toString())
