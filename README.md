@@ -1,6 +1,7 @@
 # WordWardenAPP
 
 ## Description
+The Bad Words Checker application is designed to detect and censor offensive language in the Indonesian language, leveraging advanced machine learning techniques. It features real-time detection, a comprehensive and continually updated database of Indonesian bad words, and takes into account cultural and linguistic nuances for accurate detection. The user-friendly interface ensures easy integration with various platforms, promoting respectful and inclusive online interactions.
 
 
 ## Team
