@@ -66,13 +66,20 @@ class ProfileFragment : Fragment() {
         val userEmail = binding.email
         historyRecyclerView = binding.rvHistory
 
+        sharedViewModel.userEmail.observe(viewLifecycleOwner) { email ->
+            if (email != null) {
+                userEmail.text = email
+                loadUserHistoryByEmail(email)
+            }
+        }
+
         val userId = userPreference.getUserId()
         userId?.let {
-            fetchUserData(it, userName, userEmail)
+            fetchUserData(it, userName)
         }
     }
 
-    private fun fetchUserData(userId: String, userName: TextView, userEmail: TextView) {
+    private fun fetchUserData(userId: String, userName: TextView) {
         val token = userPreference.getUserToken()
 
         if (token != null) {
@@ -81,10 +88,7 @@ class ProfileFragment : Fragment() {
                     result.onSuccess { userResponse ->
                         val userData = userResponse.payload.data
                         userData?.let {
-                            sharedViewModel.setUserEmail(it.email ?: "N/A")
                             userName.text = it.name ?: "N/A"
-                            userEmail.text = it.email ?: "N/A"
-                            loadUserHistoryByEmail(it.email.toString())
                         }
                     }.onFailure { exception ->
                         Toast.makeText(requireContext(), "Failed to fetch name and email: ${exception.message}", Toast.LENGTH_SHORT).show()
