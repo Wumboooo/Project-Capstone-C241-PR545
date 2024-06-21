@@ -19,3 +19,6 @@ The Bad Words Checker application is designed to detect and censor offensive lan
 - [CC Node](https://github.com/Wumboooo/Project-Capstone-C241-PR545/tree/CC-Node)
 - [CC Flask](https://github.com/Wumboooo/Project-Capstone-C241-PR545/tree/CC-Flask)
 - [Mobile Development](https://github.com/Wumboooo/Project-Capstone-C241-PR545/tree/MD)
+
+## Previews
+![mockup](https://github.com/Wumboooo/Project-Capstone-C241-PR545/assets/105157190/76b41797-6754-4c5f-a9d7-58c8e206a688)
